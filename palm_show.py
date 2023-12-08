@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import scienceplots
 
-filename = '../e1_cbl/OUTPUT/e1_cbl_3d.001.nc'
+filename = '../e1_cbl/OUTPUT/e1_cbl_3d.000.nc'
 ds = xr.open_dataset(filename)
 thetada = ds['theta'][-1,3,:,:] # 3hr, 
 
@@ -20,7 +20,7 @@ fontdicts={'weight': 'bold', 'size': 10}
 with plt.style.context(['science','no-latex']):
     fig, axes = plt.subplots(2, 2,dpi=100, figsize=(11, 9))
     plt.subplots_adjust(wspace=0.3, hspace=0.2,right=0.92,top=0.95,left=0.1)
-    cs = ds['theta'][-1,3,:,:].plot.contourf(
+    cs = ds['theta'][-1,10,:,:].plot.contourf(
         ax=axes[0,0],
         robust=True,
         cmap = 'jet',
@@ -39,7 +39,7 @@ with plt.style.context(['science','no-latex']):
     axes[0,0].set_xlim(0,2000)
     axes[0,0].set_xticks(np.arange(300,2000,300))
     
-    cs = ds['w'][-1,3,:,:].plot.contourf(
+    cs = ds['w'][-1,10,:,:].plot.contourf(
         ax=axes[0,1],
         robust=True,
         cmap = 'jet',
@@ -58,7 +58,7 @@ with plt.style.context(['science','no-latex']):
     axes[0,1].set_xlim(0,2000)
     axes[0,1].set_xticks(np.arange(300,2000,300))
     
-    cs = ds['theta'][-1,10,:,:].plot.contourf(
+    cs = ds['theta'][-1,100,:,:].plot.contourf(
         ax=axes[1,0],
         robust=True,
         cmap = 'jet',
@@ -77,7 +77,7 @@ with plt.style.context(['science','no-latex']):
     axes[1,0].set_xlim(0,2000)
     axes[1,0].set_xticks(np.arange(300,2000,300))
     
-    cs = ds['w'][-1,10,:,:].plot.contourf(
+    cs = ds['w'][-1,100,:,:].plot.contourf(
         ax=axes[1,1],
         robust=True,
         cmap = 'jet',
