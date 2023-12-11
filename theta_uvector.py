@@ -72,4 +72,4 @@ with plt.style.context(['science', 'no-latex']):
     axes[1].set_xticks(np.arange(300, 2000, 300))
 
 plt.show()
-plt.savefig('../figure/xy_theta_z_t_w.png')
+plt.savefig('../e1_cbl/OUTPUT/xy_theta_z_t_w.png')

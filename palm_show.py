@@ -30,7 +30,7 @@ with plt.style.context(['science','no-latex']):
     aa = ('Plot of ' + ds['theta'].attrs.get('long_name', None) 
           + ' '*3 
           +'t='+axes[0, 0].get_title()[14:16]+'h   '
-          +'z='+axes[0, 0].get_title()[-11:-6]+'m'
+          +'z=50m'
           +' '*6
           +ds['theta'].attrs.get('units', None))
     axes[0,0].set_title(aa)
@@ -68,7 +68,7 @@ with plt.style.context(['science','no-latex']):
     aa = ('Plot of ' + ds['theta'].attrs.get('long_name', None) 
           + ' '*3 
           +'t='+axes[1, 0].get_title()[14:16]+'h   '
-          +'z='+axes[1, 0].get_title()[-11:-6]+'m'
+          +'z=500m'
           +' '*6
           +ds['theta'].attrs.get('units', None))
     axes[1,0].set_title(aa)
@@ -95,4 +95,4 @@ with plt.style.context(['science','no-latex']):
     axes[1,1].set_yticks(np.arange(300,2000,300))
     axes[1,1].set_xlim(0,2000)
     axes[1,1].set_xticks(np.arange(300,2000,300))
-plt.savefig('../figure/e1_cbl_50m.png')
+plt.savefig('../e1_cbl/OUTPUT/e1_cbl_5m.png')

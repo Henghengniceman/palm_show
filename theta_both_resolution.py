@@ -14,7 +14,7 @@ import scienceplots
 
 ds_50 = xr.open_dataset('../e1_cbl/OUTPUT/e1_cbl_3d.001.nc')
 ds_5 = xr.open_dataset('../e1_cbl/OUTPUT/e1_cbl_3d.000.nc')
-parameter = 'w'
+parameter = 'theta'
 fontdicts={'weight': 'bold', 'size': 10}
 with plt.style.context(['science','no-latex']):
     fig, axes = plt.subplots(2, 2,dpi=100, figsize=(11, 9))
@@ -38,8 +38,8 @@ with plt.style.context(['science','no-latex']):
     axes[0,0].set_yticks(np.arange(300,2000,300))
     axes[0,0].set_xlim(0,2000)
     axes[0,0].set_xticks(np.arange(300,2000,300))
-    
-    cs = ds_5[parameter][-1,26,:,:].plot.contourf(
+     
+    cs = ds_5[parameter][-1,30,:,:].plot.contourf(
         ax=axes[0,1],
         robust=True,
         cmap = 'jet',
@@ -59,7 +59,8 @@ with plt.style.context(['science','no-latex']):
     axes[0,1].set_xlim(0,2000)
     axes[0,1].set_xticks(np.arange(300,2000,300))
     
-    cs = ds_50[parameter][-1,10,:,:].plot.contourf(
+    parameter = 'w'   
+    cs = ds_50[parameter][-1,3,:,:].plot.contourf(
         ax=axes[1,0],
         robust=True,
         cmap = 'jet',
@@ -79,7 +80,7 @@ with plt.style.context(['science','no-latex']):
     axes[1,0].set_xlim(0,2000)
     axes[1,0].set_xticks(np.arange(300,2000,300))
     
-    cs = ds_5[parameter][-1,100,:,:].plot.contourf(
+    cs = ds_5[parameter][-1,30,:,:].plot.contourf(
         ax=axes[1,1],
         robust=True,
         cmap = 'jet',
@@ -98,4 +99,4 @@ with plt.style.context(['science','no-latex']):
     axes[1,1].set_yticks(np.arange(300,2000,300))
     axes[1,1].set_xlim(0,2000)
     axes[1,1].set_xticks(np.arange(300,2000,300))
-plt.savefig('../figure/e1_cbl_'+parameter+'_2_res.png')
+plt.savefig('../e1_cbl/OUTPUT/e1_cbl_theta'+parameter+'_2_res.png')

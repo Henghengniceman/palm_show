@@ -27,5 +27,5 @@ with plt.style.context(['science', 'no-latex']):
         axes[i].set_title(title)
         axes[i].set_xlabel('t(s)')
         
-plt.savefig('../figure/e1_cbl/ts.png')        
+plt.savefig('../e1_cbl/OUTPUT/ts.png')        
         
