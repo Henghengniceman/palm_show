@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Fri Dec  8 13:26:20 2023
+Created on Wed Jan 10 17:48:10 2024
 
 @author: zhang
 """
@@ -13,7 +13,7 @@ import matplotlib.patches as mpatches
 import scienceplots
 from datetime import datetime
 
-filename = '../e1_cbl/OUTPUT/e1_cbl_ts.000.nc'
+filename = '../OUTPUT/Tokyo_LSM_ts.000.nc'
 ds = xr.open_dataset(filename)
 var = ['E*','wmax','wtheta','w*']
 with plt.style.context(['science', 'no-latex']):
@@ -27,5 +27,5 @@ with plt.style.context(['science', 'no-latex']):
         axes[i].set_title(title)
         axes[i].set_xlabel('t(s)')
         
-plt.savefig('../e1_cbl/OUTPUT/ts.png')        
+# plt.savefig('../e1_cbl/OUTPUT/ts.png')        
         
