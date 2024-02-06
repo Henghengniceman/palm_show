@@ -10,18 +10,32 @@ import xarray as xr
 import matplotlib.pyplot as plt
 import numpy as np
 import scienceplots
+import pandas as pd
 
-# filename = '../Tokyo_nesting/OUTPUT/Tokyo_nesting_3d.000.nc'
-ds = xr.open_dataset('../Tokyo_nesting/OUTPUT/Tokyo_nesting_3d.000.nc')
-ds_N02 = xr.open_dataset('../Tokyo_nesting/OUTPUT/Tokyo_nesting_3d.000.nc')
+No=4
+ds_3d_av_N01 = xr.open_dataset('../Tokyo_era5_small/OUTPUT/Tokyo_era5_small_av_3d.00'+str(No)+'.nc')
+dt_3d_av = []
+for dt in ds_3d_av_N01['theta']['time'].values:
+    dt_3d_av.append(pd.to_datetime('2020-05-01 21:00:00')+dt)    
+ds_3d_av_N01 = ds_3d_av_N01.assign_coords(time=dt_3d_av)
 
+ds_3d_av_N02 = xr.open_dataset('../Tokyo_era5_small/OUTPUT/Tokyo_era5_small_av_3d_N02.00'+str(No)+'.nc')
+dt_3d_av = []
+for dt in ds_3d_av_N02['theta']['time'].values:
+    dt_3d_av.append(pd.to_datetime('2020-05-01 21:00:00')+dt)    
+ds_3d_av_N02 = ds_3d_av_N02.assign_coords(time=dt_3d_av)
 
 fontdicts = {'weight': 'bold', 'size': 10}
 with plt.style.context(['science', 'no-latex']):
     fig, axes = plt.subplots(2, 2,dpi=100, figsize=(11, 9))
     plt.subplots_adjust(wspace=0.3, hspace=0.2,right=0.92,top=0.95,left=0.1)
-    cs = ds['theta'][-10,20,:,:].plot.contourf(
+    cs = ds_3d_av_N01['w'][-10,20,:,:].plot.imshow(
         ax=axes[0,0],
+        robust=True,
+        cmap = 'jet',
+        add_colorbar=True,)
+    cs = ds_3d_av_N02['w'][-10,20,:,:].plot.imshow(
+        ax=axes[0,1],
         robust=True,
         cmap = 'jet',
         add_colorbar=True,
